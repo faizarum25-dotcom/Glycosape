@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "A_CECILIA JULITA SINAGA",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": -0.18, "left": 14.17, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 17.9, "left": -144.2, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot2", "top": 123.5, "left": -144.2, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 261.8,
+      "left": -173.4,
+      "attrs": {}
+    },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 32.62, "left": 155.92, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 146.4,
+      "left": 165,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 178.8,
+      "left": 234.2,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "pot2:GND", "black", [ "h0" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v28.8", "h57.6", "v115.2" ] ],
+    [ "ntc1:GND", "esp:GND.1", "black", [ "h0", "v-48" ] ],
+    [ "bz1:1", "esp:GND.4", "black", [ "v0" ] ],
+    [ "pot1:VCC", "esp:3V3.1", "red", [ "v9.6", "h37.6", "v-67.2" ] ],
+    [ "pot2:VCC", "esp:3V3.1", "red", [ "v9.6", "h47.2", "v-172.8" ] ],
+    [ "imu1:VCC", "esp:3V3.1", "red", [ "v-48", "h-230.32", "v38.4" ] ],
+    [ "pot1:SIG", "esp:1", "green", [ "v-105.6", "h230", "v76.8", "h-19.2" ] ],
+    [ "pot2:SIG", "esp:2", "green", [ "v-86.4", "h38", "v-134.4", "h182.4", "v96" ] ],
+    [ "ntc1:OUT", "esp:3", "green", [ "h9.6", "v-153.7" ] ],
+    [ "imu1:SDA", "esp:8", "green", [ "v-76.8", "h-201.52", "v172.8" ] ],
+    [ "imu1:SCL", "esp:9", "green", [ "v-86.4", "h-220.72", "v211.2" ] ],
+    [ "bz1:2", "esp:5", "green", [ "v48", "h-192.4", "v-211.2" ] ],
+    [ "led1:A", "esp:6", "green", [ "v28.8", "h19.2", "v-249.6", "h-307.2", "v76.8" ] ],
+    [ "ntc1:VCC", "esp:3V3.2", "red", [ "h19.2", "v-259.2" ] ],
+    [ "led1:C", "esp:GND.4", "black", [ "v19.2", "h-124.4", "v-9.6" ] ],
+    [ "imu1:GND", "esp:GND.4", "black", [ "v-19.2", "h-76.72", "v211.2" ] ]
+  ],
+  "dependencies": {}
+}
